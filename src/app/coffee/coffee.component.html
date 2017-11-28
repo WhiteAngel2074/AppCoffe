@@ -1,27 +1,38 @@
 <form>
-  <mat-form-field>
-    <input matInput placeholder="Favorite Coffee"  [(ngModel)]="coffee.name" name="name">
-  </mat-form-field>
+  <mat-card>
+    <mat-form-field>
+      <input matInput placeholder="Favorite Coffee" [(ngModel)]="coffee.name" name="name">
+    </mat-form-field>
 
+    <mat-form-field>
+      <mat-select placeholder="Coffee Type" name="type" [(ngModel)]="coffee.type">
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{ type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card>
 
-  <mat-form-field>
-    <input type="text" matInput placeholder="Place Name" [(ngModel)]="coffee.place" name="place">
-  </mat-form-field>
+  <mat-card>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Place Name" [(ngModel)]="coffee.place" name="place">
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-select placeholder="Coffee Type" name="type" [(ngModel)]="coffee.type" >
-      <mat-option *ngFor="let type of types" [value]="type">
-        {{ type}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput placeholder="adress" [(ngModel)]="coffee.location.adress" name="adress">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="text" matInput placeholder="city" [(ngModel)]="coffee.location.city" name="city">
+    </mat-form-field>
+  </mat-card>
 
   <mat-form-field class="example-full-width">
     <textarea matInput placeholder="Leave a note" name="notes" [(ngModel)]="coffee.notes"></textarea>
   </mat-form-field>
 
   <mat-card>
-    {{coffee | json}}
+    {{ coffee | json }}
   </mat-card>
 
 </form>

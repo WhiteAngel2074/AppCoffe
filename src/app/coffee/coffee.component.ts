@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Coffee } from '../../model/Coffee';
+import { GeolocationService } from '../geolocation.service';
 @Component({
   selector: 'app-coffee',
   templateUrl: './coffee.component.html',
@@ -12,15 +13,23 @@ export class CoffeeComponent implements OnInit {
     "Espresso", "Risteretto", "Americano", "Cappuccino"
   ];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute , private geolocation: GeolocationService) { }
   routingSubscrition: any;
 
   ngOnInit() {
     // Sauvegarde le l'ID d'un caffé pour une modification ou supression ou etc ...
-    this.coffee= new Coffee();
+    this.coffee = new Coffee();
     this.routingSubscrition =
       this.route.params.subscribe(params => {
         console.log(params["id"]);
+      });
+
+      // Call API Geolocation
+      this.geolocation.reqestLocation(location => {
+        if (location) {
+            this.coffee.location.latitude = location.latitude;
+            this.coffee.location.longitude = location.longitude;
+        }
       })
 
   }
