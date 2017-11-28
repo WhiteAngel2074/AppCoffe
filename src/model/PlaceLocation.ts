@@ -1,4 +1,4 @@
-class PlaceLocation {
+export class PlaceLocation {
 
   constructor(
     public adress: string="",

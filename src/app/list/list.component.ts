@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DataService } from '../data.service';
+import { Coffee } from '../../model/Coffee';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+  // injecter la dataService
+  constructor(private data: DataService) { }
 
-  constructor() { }
+  list: [Coffee];
 
   ngOnInit() {
+    //get the list
+    this.data.getList(list => {
+      this.list = list;
+    })
   }
 
 }

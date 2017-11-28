@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule,MatToolbarModule } from '@angular/material';
+import {MatButtonModule, MatCheckboxModule,MatToolbarModule,MatCardModule,MatIconModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { GeolocationService } from './geolocation.service';
@@ -29,7 +29,7 @@ const routes :Routes = [
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    BrowserAnimationsModule,MatButtonModule, MatCheckboxModule,MatToolbarModule
+    BrowserAnimationsModule,MatButtonModule, MatCheckboxModule,MatToolbarModule,MatCardModule,MatIconModule
   ],
   providers: [GeolocationService,DataService],
   bootstrap: [AppComponent]
