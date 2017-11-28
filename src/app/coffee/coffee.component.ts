@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Coffee } from '../../model/Coffee';
 import { TastingRating } from '../../model/TastingRating';
 import { GeolocationService } from '../geolocation.service';
+import { DataService } from '../data.service';
+
 @Component({
   selector: 'app-coffee',
   templateUrl: './coffee.component.html',
@@ -14,23 +16,32 @@ export class CoffeeComponent implements OnInit {
     "Espresso", "Risteretto", "Americano", "Cappuccino"
   ];
 
-  constructor(private route: ActivatedRoute , private geolocation: GeolocationService) { }
+  constructor(private route: ActivatedRoute,
+    private geolocation: GeolocationService,
+    private router: Router,
+    private data: DataService) { }
+
   routingSubscrition: any;
 
-tastingRatingChanged(checked:boolean){
-  if (checked) {
+  tastingRatingChanged(checked: boolean) {
+    if (checked) {
       this.coffee.tastingRating = new TastingRating();
-  }else {
-    this.coffee.tastingRating = null;
+    } else {
+      this.coffee.tastingRating = null;
+    }
   }
-}
 
-cancel(){
-  
-}
-save(){
-
-}
+  cancel() {
+    // retourner à la page précédente !
+    this.router.navigate(["/"]);
+  }
+  save() {
+    this.data.save(this.coffee, result => {
+      if (result) {
+        this.router.navigate(["/"]);
+      }
+    })
+  }
   ngOnInit() {
     // Sauvegarde le l'ID d'un caffé pour une modification ou supression ou etc ...
     this.coffee = new Coffee();
@@ -39,13 +50,13 @@ save(){
         console.log(params["id"]);
       });
 
-      // Call API Geolocation
-      this.geolocation.reqestLocation(location => {
-        if (location) {
-            this.coffee.location.latitude = location.latitude;
-            this.coffee.location.longitude = location.longitude;
-        }
-      })
+    // Call API Geolocation
+    this.geolocation.reqestLocation(location => {
+      if (location) {
+        this.coffee.location.latitude = location.latitude;
+        this.coffee.location.longitude = location.longitude;
+      }
+    })
 
   }
   ngOnDestroy() {

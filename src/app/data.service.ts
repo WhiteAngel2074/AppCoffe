@@ -22,6 +22,7 @@ export class DataService {
     // ];
     // callback(list);
   }
+
   save(coffee, callback) {
   if (coffee._id) {
       //it's an update
@@ -31,7 +32,7 @@ export class DataService {
       });
   }else {
     // it's an insert !!
-    this.http.put(`${this.endpoint}/coffees`, coffee)
+    this.http.post(`${this.endpoint}/coffees`, coffee)
     .subscribe(response => {
       console.log(coffee);
       callback(true);
