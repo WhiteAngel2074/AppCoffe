@@ -1,8 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule,MatToolbarModule,MatCardModule,MatIconModule } from '@angular/material';
+import { Routes, RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import {
+  MatButtonModule, MatCheckboxModule, MatToolbarModule,
+  MatCardModule, MatIconModule, MatInputModule,MatSelectModule
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { GeolocationService } from './geolocation.service';
@@ -13,10 +17,10 @@ import 'hammerjs';
 
 import { ListComponent } from './list/list.component';
 import { CoffeeComponent } from './coffee/coffee.component';
-const routes :Routes = [
-  {path:'' , component: ListComponent},
-  {path:'coffee' , component: CoffeeComponent},
-  {path:'coffee/:id' , component: CoffeeComponent},
+const routes: Routes = [
+  { path: '', component: ListComponent },
+  { path: 'coffee', component: CoffeeComponent },
+  { path: 'coffee/:id', component: CoffeeComponent },
 ]
 
 @NgModule({
@@ -29,9 +33,12 @@ const routes :Routes = [
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    BrowserAnimationsModule,MatButtonModule, MatCheckboxModule,MatToolbarModule,MatCardModule,MatIconModule
+    FormsModule,
+    BrowserAnimationsModule, MatButtonModule,
+    MatCheckboxModule, MatToolbarModule, MatCardModule, MatIconModule,
+    MatInputModule,MatSelectModule
   ],
-  providers: [GeolocationService,DataService],
+  providers: [GeolocationService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
