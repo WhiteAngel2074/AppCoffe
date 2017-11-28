@@ -7,3 +7,18 @@
 .example-full-width {
   width: 100%;
 }
+mat-form-field{
+  width: 100%;
+}
+mat-select{
+  width: 100%;
+}
+mat-card {
+  margin: 20px;
+}
+mat-card-title {
+  font-size: larger;
+}
+mat-slider {
+  width: 90%;
+}

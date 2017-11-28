@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Coffee } from '../../model/Coffee';
+import { TastingRating } from '../../model/TastingRating';
 import { GeolocationService } from '../geolocation.service';
 @Component({
   selector: 'app-coffee',
@@ -16,6 +17,13 @@ export class CoffeeComponent implements OnInit {
   constructor(private route: ActivatedRoute , private geolocation: GeolocationService) { }
   routingSubscrition: any;
 
+tastingRatingChanged(checked:boolean){
+  if (checked) {
+      this.coffee.tastingRating = new TastingRating();
+  }else {
+    this.coffee.tastingRating = null;
+  }
+}
   ngOnInit() {
     // Sauvegarde le l'ID d'un caffé pour une modification ou supression ou etc ...
     this.coffee = new Coffee();
