@@ -8,6 +8,12 @@ export class DataService {
   public endpoint = "http://localhost:3000"
 
   constructor(private http: Http) { }
+  get(coffeeId : string , callback){
+    this.http.get(`${this.endpoint}/coffees/${coffeeId}`)
+    .subscribe(response => {
+      callback(response.json());
+    })
+  }
   getList(callback) {
 
     this.http.get(`${this.endpoint}/coffees`)

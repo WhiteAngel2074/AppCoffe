@@ -12,8 +12,14 @@ import { DataService } from '../data.service';
 })
 export class CoffeeComponent implements OnInit {
   coffee: Coffee;
+  // quand je fais la modification le Switch doit être actif !
+  tastingEnabled: boolean ;
+
   types = [
-    "Espresso", "Risteretto", "Americano", "Cappuccino"
+    "Espresso",
+    "Risteretto",
+    "Americano",
+    "Cappuccino"
   ];
 
   constructor(private route: ActivatedRoute,
@@ -48,6 +54,16 @@ export class CoffeeComponent implements OnInit {
     this.routingSubscrition =
       this.route.params.subscribe(params => {
         console.log(params["id"]);
+        if (params["id"]) {
+          this.data.get(params["id"], response => {
+            this.coffee = response;
+
+            // vérifier si ce caffé a été noté plus ( switch )
+            if (this.coffee.tastingRating) {
+                this.tastingEnabled =true;
+            }
+          });
+        }
       });
 
     // Call API Geolocation

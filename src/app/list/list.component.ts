@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Coffee } from '../../model/Coffee';
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -8,9 +10,12 @@ import { Coffee } from '../../model/Coffee';
 })
 export class ListComponent implements OnInit {
   // injecter la dataService
-  constructor(private data: DataService) { }
-
   list: [Coffee];
+  constructor(private data: DataService , private router: Router) { }
+
+  goDetail(coffee : Coffee){
+    this.router.navigate(["/coffee", coffee._id])
+  }
 
   ngOnInit() {
     //get the list
