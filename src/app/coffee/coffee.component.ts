@@ -24,6 +24,13 @@ tastingRatingChanged(checked:boolean){
     this.coffee.tastingRating = null;
   }
 }
+
+cancel(){
+  
+}
+save(){
+
+}
   ngOnInit() {
     // Sauvegarde le l'ID d'un caffé pour une modification ou supression ou etc ...
     this.coffee = new Coffee();

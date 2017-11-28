@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import {
   MatButtonModule, MatCheckboxModule, MatToolbarModule,
   MatCardModule, MatIconModule, MatInputModule,MatSelectModule,
@@ -35,6 +36,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserModule,
     FormsModule,
+    HttpModule,
     BrowserAnimationsModule, MatButtonModule,
     MatCheckboxModule, MatToolbarModule, MatCardModule, MatIconModule,
     MatInputModule,MatSelectModule,MatSliderModule,MatSlideToggleModule
