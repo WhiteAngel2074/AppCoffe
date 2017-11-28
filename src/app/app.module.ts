@@ -5,7 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import {
   MatButtonModule, MatCheckboxModule, MatToolbarModule,
-  MatCardModule, MatIconModule, MatInputModule,MatSelectModule
+  MatCardModule, MatIconModule, MatInputModule,MatSelectModule,
+  MatSliderModule,MatSlideToggleModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -36,7 +37,7 @@ const routes: Routes = [
     FormsModule,
     BrowserAnimationsModule, MatButtonModule,
     MatCheckboxModule, MatToolbarModule, MatCardModule, MatIconModule,
-    MatInputModule,MatSelectModule
+    MatInputModule,MatSelectModule,MatSliderModule,MatSlideToggleModule
   ],
   providers: [GeolocationService, DataService],
   bootstrap: [AppComponent]
