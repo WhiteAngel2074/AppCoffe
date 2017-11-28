@@ -1,0 +1,7 @@
+{
+  "name" : "My Coffee App",
+  "start_url" : "/",
+  "orientation":"any",
+  "scope":"/",
+  "display":"standalone"
+}
